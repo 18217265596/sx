@@ -1,7 +1,7 @@
 import sys
 import os
 import getopt
-
+'-f file -c columes like 1,2,3 -o output'
 
 def do():
     name = None
