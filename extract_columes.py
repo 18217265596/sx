@@ -38,12 +38,16 @@ def do():
         print('plz name columes to extract use -c columes in comma seperated numbers')
     if len(outfile) != 0 and len(inputfile) != 0 and len(columes) != 0:
         for i in columes:
-            print(type(i))
             if i.isdigit():
                 awkinput.append('$' + str(i))
         awkinput1 = ','.join(awkinput)
         command = "awk -v OFS='\t' '{{print {2}}}' {0} > {1}".format(inputfile,outfile,awkinput1.strip(','))
     elif len(inputfile) != 0 and len(columes) != 0:
+        for i in columes:
+            print(type(i))
+            if i.isdigit():
+                awkinput.append('$' + str(i))
+        awkinput1 = ','.join(awkinput)
         command = "awk -v OFS='\t' '{{print {2}}}' {0} > {1}".format(inputfile, 'extracted_columes', awkinput1.strip(','))
         print("no outputname specified,will output as extracted_columes")
 
