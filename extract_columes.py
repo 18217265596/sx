@@ -37,14 +37,13 @@ def do():
     if len(columes) == 0:
         print('plz name columes to extract use -c columes in comma seperated numbers')
     if len(outfile) != 0 and len(inputfile) != 0 and len(columes) != 0:
-        for i in columes:
+        for i in columes.split(','):
             if i.isdigit():
                 awkinput.append('$' + str(i))
         awkinput1 = ','.join(awkinput)
         command = "awk -v OFS='\t' '{{print {2}}}' {0} > {1}".format(inputfile,outfile,awkinput1.strip(','))
     elif len(inputfile) != 0 and len(columes) != 0:
-        for i in columes:
-            print(type(i))
+        for i in columes.split(','):
             if i.isdigit():
                 awkinput.append('$' + str(i))
         awkinput1 = ','.join(awkinput)
